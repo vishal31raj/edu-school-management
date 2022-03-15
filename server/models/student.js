@@ -7,7 +7,7 @@ const studentSchema = new Schema({
   firstname: {
     type: String,
     default: "",
-    required:true,
+    required: true,
   },
   middlename: {
     type: String,
@@ -24,7 +24,7 @@ const studentSchema = new Schema({
   roll_no: {
     type: String,
     default: "",
-    required:true,
+    required: true,
   },
   address: {
     addressLine1: {
@@ -103,23 +103,20 @@ const studentSchema = new Schema({
     type: Date,
     default: "",
   },
-  classRank: {
+  student_section_rank: {
     type: Number,
-    default: -1,
+    default: 999999,
+  },
+  student_class_rank: {
+    type: Number,
+    default: 999999,
   },
   section_id: {
     type: mongoose.Types.ObjectId,
     ref: "SectionModel",
-    required:true,
+    required: true,
   },
-  subjectList: [
-    {
-      subject_id: {
-        type: mongoose.Types.ObjectId,
-        ref: "Subjects",
-      },
-    },
-  ],
+  
   awardsAndAchievments: [
     {
       achievmentName: {
