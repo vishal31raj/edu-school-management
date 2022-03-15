@@ -97,4 +97,4 @@ const teacherSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model("Teachers", teacherSchema);
+module.exports = mongoose.model("teacher", teacherSchema);
