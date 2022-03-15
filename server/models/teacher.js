@@ -1,71 +1,100 @@
+"use strict";
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const teacherSchema = new Schema({
-    full_name: {
+  firstname: {
+    type: String,
+    default: "",
+    required:true,
+  },
+  middlename: {
+    type: String,
+    default: "",
+  },
+  lastname: {
+    type: String,
+    default: "",
+  },
+  profile_image: {
+    type: String,
+    default: "",
+  },
+  contact: {
+    phone_no: {
+      type: Number,
+      unique: true,
+      default: "",
+      required:true,
+    },
+    email: {
+      type: String,
+      unique: true,
+      default: "",
+    },
+  },
+  qualifications: [
+    {
+      feild: {
         type: String,
-        default: ""
-    },
-    profile_image: {
+        default: "",
+      },
+      description: {
         type: String,
-        default: ""
+        default: "",
+      },
     },
-    contact: {
-        phone_no: {
-            type: Number,
-            default: ""
-        },
-        email: {
-            type: String,
-            unique: true,
-            default: ""
-        }
+  ],
+  dateOfBirth: {
+    type: Date,
+    default: "",
+  },
+  address: {
+    addressLine1: {
+      type: String,
+      default: "",
     },
-    qualification:{
-        type:String,
-        default:""
+    addressLine2: {
+      type: String,
+      default: "",
     },
-    dateOfBirth:{
-        type:Date,
-        default:""
+    city: {
+      type: String,
+      default: "",
     },
-    address: {
-        addressLine1: {
-            type: String,
-            default: ""
-        },
-        addressLine2: {
-            type: String,
-            default: ""
-        },
-        city: {
-            type: String,
-            default: ""
-        },
-        state: {
-            type: String,
-            default: ""
-        },
-        pincode: {
-            type: Number,
-            default: ""
-        }
+    state: {
+      type: String,
+      default: "",
     },
-    // assigned_class:{},
-    teacher_timetable:{
-        type:String,
-        default:""
+    pincode: {
+      type: Number,
+      default: "",
     },
-    subject_list:{
-        subject_id:{
-            type:mongoose.Types.ObjectId,
-            ref:"subject"
-        },
-        subject_name:{
-            type:String,
-            default:""
-        }
-    }
+  },
+  assigned_class: {
+    section_id: {
+      type: mongoose.Types.ObjectId,
+      default: "",
+      ref: "SectionModel",
+    },
+  },
+  // yet to decide
+  teacher_timetable: {
+    type: String,
+    default: "",
+  },
+  subject_list: [
+    {
+      subject_id: {
+        type: mongoose.Types.ObjectId,
+        ref: "subject",
+      },
+      subject_name: {
+        type: String,
+        default: "",
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Teachers", teacherSchema);
