@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
   // class:{}
+  adhaar_num:{
+    type:String,
+    default:"",
+  },
   firstname: {
     type: String,
     default: "",
@@ -61,6 +65,10 @@ const studentSchema = new Schema({
   },
   parent_info: {
     father_info: {
+      adhaar_num:{
+        type:String,
+        default:"",
+      },
       name: {
         type: String,
         default: "",
@@ -80,6 +88,10 @@ const studentSchema = new Schema({
       },
     },
     mother_info: {
+      adhaar_num:{
+        type:String,
+        default:"",
+      },
       name: {
         type: String,
         default: "",
@@ -133,6 +145,7 @@ const studentSchema = new Schema({
       },
     },
   ],
+ 
   
 });
 
