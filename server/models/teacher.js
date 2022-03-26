@@ -95,6 +95,7 @@ const teacherSchema = new Schema({
       },
     },
   ],
+  
 });
 
 module.exports = mongoose.model("teacher", teacherSchema);
