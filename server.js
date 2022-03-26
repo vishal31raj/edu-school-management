@@ -1,17 +1,17 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const databaseUrl = process.env.DEV_DB;
+//const databaseUrl = process.env.PROD_DB;
 
 mongoose
-  .connect(
-    "url",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(databaseUrl, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to SchoolManagement database");
   })
