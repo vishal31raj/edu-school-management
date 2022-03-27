@@ -1,4 +1,44 @@
 const StudentModel = require("../models/student");
+const SchoolModel = require("../models/school");
+
+const studentRegister = async(req, res) =>{
+    try{
+        // Add unique StudentCode
+
+// ---------------------------------
+// Reaminaing:PhoneNo,adhar,classTeacher
+// ---------------------------------
+
+        // change name according to key
+        // School parameter for ref
+        // section mapping
+        const{name,admissionNo,parent_info,dateOfBirth,adhaarDetails,section,school,fees} = req.body;
+        const schoolDetails = await SchoolModel.find(school,{_id:1});
+        const details = new StudentModel({
+            name : name,
+            parent_info:parent_info,
+            dateOfBirth: dateOfBirth,
+            sction_id:section,
+            school_id:schoolDetails._id
+        });
+        await details.save();
+        
+        return res.status(200).json({
+            result:true,
+            msg:"Registered Successfully",
+            // data:details
+        })
+        
+        
+    }
+    catch(e){
+        return res.status(500).json({
+            msg:"Registration Failed!",
+            result:false,
+        })
+    }
+}
+
 
 const studentInfo = async(req, res) =>{
     try{
@@ -56,5 +96,6 @@ const studentRank = async(req, res) =>{
 
 module.exports = {
     studentInfo,
-    studentRank
+    studentRank,
+    studentRegister
 };

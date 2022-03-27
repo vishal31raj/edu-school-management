@@ -2,7 +2,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Add salary field
 const teacherSchema = new Schema({
+  adhaar_num:{
+    type:String,
+    default:"",
+  },
   firstname: {
     type: String,
     default: "",
@@ -95,6 +100,11 @@ const teacherSchema = new Schema({
       },
     },
   ],
+  school_id: {
+    type: mongoose.Types.ObjectId,
+    ref: "school",
+    required: true,
+  },
   
 });
 

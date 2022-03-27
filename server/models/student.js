@@ -128,6 +128,11 @@ const studentSchema = new Schema({
     ref: "SectionModel",
     required: true,
   },
+  school_id: {
+    type: mongoose.Types.ObjectId,
+    ref: "school",
+    required: true,
+  },
   
   awardsAndAchievments: [
     {
